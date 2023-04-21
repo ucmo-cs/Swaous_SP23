@@ -1,0 +1,148 @@
+service: risen-one-consulting
+frameworkVersion: '3'
+
+custom:
+  reportTable: 'reports-table-${sls:stage}'
+  projectTable: 'projects-table-${sls:stage}'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+            - ses:SendEmail
+          Resource: "*"
+
+  environment:
+    REPORT_TABLE: ${self:custom.reportTable}
+    PROJECT_TABLE: ${self:custom.projectTable}
+
+functions:
+  createReport:
+    handler: handler/createReport.createReport
+    events:
+      - http:
+          path: emp/{empid}/reports/newreport
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
+  
+  listReports:
+    handler: handler/listReports.listReports
+    events:
+      - http:
+          path: emp/{empid}/reports
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
+
+  getReport:
+    handler: handler/getReport.getReport
+    events:
+      - http:
+          path: emp/{empid}/reports/{reportid}
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
+
+  sendEmail: 
+    handler: handler/sendEmail.sendEmail
+    events:
+      - http:
+          path: emp/{empid}/reports/{reportid}/email
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
+
+  listAllReportsAdmin:
+      handler: handler/listAllReportsAdmin.listAllReportsAdmin
+      events:
+        - http:
+            path: admin/{adminid}/reports
+            method: get
+            cors:
+              origin: '*'
+              headers:
+                - Content-Type
+                - Access-Control-Allow-Origin
+              allowCredentials: false
+
+  deleteReportAdmin:
+    handler: handler/deleteReportAdmin.deleteReportAdmin
+    events:
+      - http:
+          path: admin/{adminid}/emp/{empid}/reports/{reportid}/delete
+          method: delete
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
+
+  getProjects:
+    handler: handler/getProjects.getProjects
+    events:
+      - http:
+          path: projects
+          method: get
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
+
+resources:
+  Resources:
+    ReportsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: empId
+            AttributeType: S
+          - AttributeName: reportId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: empId
+            KeyType: HASH
+          - AttributeName: reportId
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.reportTable}
+    ProjectsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: projectId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: projectId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.projectTable}
