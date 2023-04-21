@@ -1,0 +1,20 @@
+<div class="container">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <mat-card class="card" style="width: 500px;">
+      <h1>Sign In</h1>
+      <form [formGroup]="signinForm">
+        <mat-label><i class="fa fa-envelope"></i> Email</mat-label>
+        <mat-form-field>
+          <input type="email" id="email" name="email" matInput formControlName="email" />
+        </mat-form-field>
+        <mat-label><i class="fa fa-key"></i> Password</mat-label>
+        <mat-form-field>
+          <i class="far fa-eye-slash" id="togglePassword" (click)="showPassword()" style="float: right; cursor: pointer"></i>
+          <input type="password" id="pswd" name="pswd" matInput formControlName="pswd" />
+        </mat-form-field>
+        <button mat-raised-button class="filled" [disabled]="signinForm.invalid" (click)="signIn()" style="align-self: center; width: 350px;">Enter Reports Portal!</button>
+        <a class="subtext" routerLink="/signup">Not registered? Sign up here!</a>
+      </form>
+      <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="loading" style="align-self: center; padding-top: 10px;"></div>
+    </mat-card>
+  </div>

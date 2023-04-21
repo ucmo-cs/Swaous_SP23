@@ -1,0 +1,42 @@
+<div class="container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <h2 mat-dialog-title>{{report.empName}}'s Report ({{report.submittedAt}})</h2>
+        <mat-dialog-content>
+            <table id="reportPDF" #reportPDF>
+                <tr>
+                    <td style="padding-right: 15px; border-bottom: none;">
+                        <mat-label><i class="fa fa-user"></i>  Submitter</mat-label>
+                            <h4 id="name" name="name" style="color: black;">{{report.empName}}</h4>
+                        <mat-label *ngIf="isAdmin"><i class="fa fa-envelope"></i>  Submitter's Email</mat-label>
+                            <h4 *ngIf="isAdmin" id="email" name="email" style="color: black;">{{report.email}}</h4>
+                        <mat-label><i class="fa fa-calendar"></i> Date Submitted</mat-label>
+                            <h4 id="date" name="date" style="color: black;">{{report.submittedAt}}</h4>
+                        <mat-label><i class="fa fa-cogs"></i>  Project(s)</mat-label>
+                            <h4 id="projects" name="projects" style="color: black;">{{report.projects}}</h4>
+                    </td>
+                        <mat-label><i class="fa fa-envelope-open-text"></i> Report</mat-label>
+                        <h4 id="reportText" name="reportText" style="color: black;">{{report.reportText}}</h4>
+                        <div style="padding-top: 30%;">
+                            <p class="id">Employee ID: {{report.empId}}</p>
+                            <p class="id">Report ID: {{report.reportId}}</p>
+                        </div>
+                </tr>
+            </table>
+        </mat-dialog-content>
+        <div class="viewButtons">
+            <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="!loading" style="padding-right: 10px;"></div>
+            <button mat-raised-button class="unfilled" mat-dialog-close (click)="close()">Close</button>
+            <div class="divider"></div>
+            <button mat-raised-button *ngIf="isAdmin" class="filledDelete" mat-dialog-close (click)="deleteReport()">Delete</button>
+            <div class="divider"></div>
+
+            <button mat-raised-button class="filled" [matMenuTriggerFor]="menu">
+                Options  |  <i class="fa fa-caret-down"></i>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item *ngIf="isAdmin" (click)="send()"><i class="fa fa-paper-plane"></i>   Email to Yourself</button>
+                <button mat-menu-item *ngIf="!isAdmin" (click)="send()"><i class="fa fa-paper-plane"></i>   Email to Advisor</button>
+                <button mat-menu-item (click)="export()"><i class="fa fa-file-download"></i>   Export to PDF</button>
+            </mat-menu>
+        </div>
+</div>

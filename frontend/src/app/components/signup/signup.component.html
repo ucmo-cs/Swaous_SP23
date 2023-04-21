@@ -1,0 +1,56 @@
+<div class="container">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <mat-card *ngIf="!confirmed" class="card" style="width: 500px;">
+      <h1>Create New Account</h1>
+      <form [formGroup]="signupForm">
+        <mat-label><i class="fa fa-user"></i> Full Name</mat-label>
+        <mat-form-field>
+          <input type="text" id="name" name="name" placeholder="ex. Jean Deaux" matInput formControlName="name" />
+        </mat-form-field>
+        <mat-label><i class="fa fa-envelope"></i> Email</mat-label>
+        <mat-form-field>
+          <input type="email" id="email" name="email" placeholder="ex. jeandeaux@risen-one.com" matInput formControlName="email" />
+        </mat-form-field>
+        <mat-label><i class="fa fa-key"></i> Password</mat-label>
+        <mat-form-field>
+          <i class="far fa-eye-slash" id="togglePassword" (click)="showPassword()" style="float: right; cursor: pointer"></i>
+          <input type="password" id="pswd" name="pswd" (keyup)="pswdCred()" matInput formControlName="pswd" />
+        </mat-form-field>
+
+        <h3>Password must:</h3>
+        <div class="pswdCred">
+            <p id="lower" class="invalid">Have at least <b>one (1) lowercase</b> letter</p>
+            <p id="capital" class="invalid">Have at least <b>one (1) capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">Have at least <b>one (1) number</b></p>
+            <p id="special" class="invalid">Have at least <b>one (1) special character</b> (  !"#$%&'()*+,-./:;<=>?@[\]^_`/|~)</p>
+            <p id="length" class="invalid">Be minimum <b>eight (8) characters</b> long</p>
+        </div>
+
+        <mat-label><i class="fa fa-key"></i>  Confirm Password</mat-label>
+        <mat-form-field>
+          <i class="far fa-eye-slash" id="toggleConfirmPassword" (click)="showConfirmedPassword()" style="float: right; cursor: pointer"></i>
+          <input type="password" id="confirmPswd" name="confirmPswd" matInput formControlName="confirmPswd" />
+        </mat-form-field>
+
+        <div *ngIf="signupForm.value.pswd != signupForm.value.confirmPswd" style="color: red">Passwords do not match!</div>
+        <button mat-raised-button class="filled" [disabled]="(signupForm.value.pswd !== signupForm.value.confirmPswd) || signupForm.invalid" (click)="signUp()" style="align-self: center; width: 350px;">Create Account!</button>
+        <a class="subtext" routerLink="/signin">Already have an account? Sign in here!</a>
+      </form>
+
+    <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="loading" style="align-self: center; padding-top: 10px;"></div>
+    </mat-card>
+
+    <mat-card *ngIf="confirmed" class="card" style="width: 500px;">
+      <h1>Confirm Account</h1>
+      <form [formGroup]="codeForm">
+        <mat-label><i class="fa fa-code"></i> Verification Code (sent to user email)</mat-label>
+        <mat-form-field>
+          <input type="text" id="code" name="code" matInput formControlName="code" />
+        </mat-form-field>
+
+        <button mat-raised-button class="filled" [disabled]="codeForm.invalid" (click)="confirmUser()" style="align-self: center; width: 350px;">Confirm</button>
+      </form>
+      
+      <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="loading" style="align-self: center; padding-top: 10px;"></div>
+    </mat-card>
+  </div>

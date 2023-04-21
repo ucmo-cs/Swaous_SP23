@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 mat-dialog-title>Add Report</h2>
+        <mat-dialog-content [formGroup]="reportForm">
+            <table>
+                <tr>
+                    <td style="padding-right: 15px; border-bottom: none;">
+                        <mat-label><i class="fa fa-user"></i>  Name</mat-label><i class="far fa-check-square" style="padding: 5px 5px; float: right; color: green; font-size: 10px;">  Auto-filled</i>
+                        <mat-form-field class="name">
+                            <input type="text" id="name" name="name" style="color: gray;" [(ngModel)]="user.name" matInput formControlName="name" [readonly]="true" />
+                        </mat-form-field>
+                        <mat-label><i class="fa fa-calendar"></i> Date</mat-label><i class="far fa-check-square" style="padding: 5px 5px; float: right; color: green; font-size: 10px;">  Auto-filled</i>
+                        <mat-form-field class="date">
+                            <input type="text" id="date" name="date" style="color: gray;" matInput formControlName="date" [readonly]="true" />
+                        </mat-form-field>
+                        <mat-label><i class="fa fa-cogs"></i> Project(s)</mat-label>
+                        <mat-form-field class="projects">
+                            <mat-select class="projectSelect" type="text" id="projects" name="projects" placeholder="Select..." matInput formControlName="projects" multiple>
+                                <mat-option *ngFor="let project of projects" [value]="project.name">{{project.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </td>
+                    <td style="padding-right: 15px; border-bottom: none;">
+                        <mat-label><i class="fa fa-envelope-open-text"></i> Report Text</mat-label>
+                        <textarea class="reportText" type="text" id="reportText" name="reportText" placeholder="Report text goes here..." matInput formControlName="reportText"></textarea>
+                    </td>
+                    </tr>
+            </table>
+        </mat-dialog-content>
+        <mat-dialog-actions class="actions">
+            <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="!loading" style="padding-right: 10px;"></div>
+            <button mat-raised-button class="unfilled" mat-dialog-close (click)="close()">Cancel</button>
+            <button mat-raised-button class="filled" [disabled]="reportForm.invalid" (click)="submit()">Save</button>
+        </mat-dialog-actions>
+</div>
