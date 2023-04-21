@@ -1,0 +1,63 @@
+<div style="height: 100vh; display: flex; flex-direction: column">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img width="140" alt="ROC" src="../assets/logo.webp" />
+    <span *ngIf="isAdmin" class="title">Risen One Admin Portal</span>
+    <span *ngIf="!isAdmin" class="title">Risen One Employee Portal</span>
+    <div class="spacer"></div>
+        <button mat-button class="menu" [matMenuTriggerFor]="menu">
+          <i class="fa fa-bars" style="cursor: pointer;"></i>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <a mat-menu-item *ngIf="!user || !isAuthenticated" routerLink="/signin"><i class="fa fa-sign-in-alt"></i>  Sign In</a>
+          <a mat-menu-item *ngIf="!user || !isAuthenticated" routerLink="/signup"><i class="fa fa-user-plus"></i>  Sign Up</a>
+          <a mat-menu-item *ngIf="user && isAuthenticated && !isAdmin" routerLink="/{{user.sub}}/reports"><i class="fa fa-envelope-open-text"></i>  Reports</a>
+          <a mat-menu-item *ngIf="user && isAuthenticated && isAdmin" routerLink="/admin"><i class="fa fa-users"></i>  User Reports</a>
+          <a mat-menu-item *ngIf="user && isAuthenticated" routerLink="/{{user.sub}}/profile"><i class="fa fa-user-circle"></i>  Profile</a>
+          <a mat-menu-item *ngIf="user && isAuthenticated" routerLink="/signin" (click)="signOut()"><i class="fa fa-sign-out-alt"></i>  Logout</a>
+        </mat-menu>
+  </div>
+  
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="margin-top: auto" class="footer">
+    <div class="item">
+      <div>Risen One Consulting</div>
+      <div class="details">
+        <div class="info">20285 Metcalf Ave</div>
+        <div class="info">Bucyrus, KS 66013</div>
+        <div class="info">
+          Mail:
+          <a data-auto-recognition="true" href="mailto:info@risen-one.com"
+          >info@risen-one.com</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div>Menu</div>
+      <div class="details">
+        <div class="info">
+          <a aria-label="collaborate" target="_blank" rel="noopener" href="https://www.risen-one.com/collaborate" title="Collaborate">Collaborate</a>
+        </div>
+        <div class="info">
+          <a aria-label="Success Stories" target="_blank" rel="noopener" href="https://www.risen-one.com/success-stories" title="Success Stories">Success Stories</a>
+        </div>
+        <div class="info">
+          <a aria-label="Connect" target="_blank" rel="noopener" href="https://www.risen-one.com/connect" title="Connect">Connect</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>

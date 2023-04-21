@@ -1,0 +1,46 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    width: 70vw;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+.pswdCred {
+    font-size: 13px;
+    padding-left: 12px;
+    padding-bottom: 15px;
+}
+
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -5px;
+    content: "✔";
+}
+
+.invalid {
+    color: red;
+  }
+  
+.invalid:before {
+    position: relative;
+    left: -5px;
+    content: "✖";
+}

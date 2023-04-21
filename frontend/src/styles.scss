@@ -1,0 +1,1404 @@
+/* You can add global styles to this file, and also import other style files */
+
+//Filled Buttons
+.filled {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px !important;
+  background-color: #e0aa51 !important;
+  color: white !important;
+  cursor: pointer;
+
+  &:hover {
+    background: #e0a951d8 !important;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: gray !important;
+    color: black !important;
+  }
+}
+
+
+//Unfilled buttons
+.unfilled {
+  padding: 16px !important;
+  font-size: 16px;
+  border: 3px solid #e0aa51 !important;
+  border-radius: 20px !important;
+  background-color: white !important;
+  color: #e0aa51 !important;
+  cursor: pointer;
+
+  &:hover {
+    background: #ffffffdc !important;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.filledDelete {
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px !important;
+  background-color: red !important;
+  color: white !important;
+  cursor: pointer;
+
+  &:hover {
+    background: #ff0000a2 !important;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+//Subtext for sign in and sign up
+.subtext {
+  font-size: 10px;
+  padding-top: 10px;
+  color: blue;
+}
+
+
+//Buttons for submitting report Pop-up
+.actions {
+  float: right;
+}
+
+//Buttons for reports table
+.tableButtons {
+  padding-top: 1%;
+  padding-left: 6%;
+}
+
+//Buttons for viewing single report
+.viewButtons {
+  padding-bottom: 2%;
+  padding-left: 54%;
+}
+
+//Divides buttons
+.divider {
+  width: 2%;
+  height: auto;
+  display: inline-block;
+}
+
+//Table Border
+.mat-mdc-table {
+  border: 1px solid gray !important;
+}
+
+//Reports Table Header
+.mat-mdc-table .mat-mdc-header-cell {
+  background: #e0aa51 !important;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+//Sorting Arrow 
+.mat-sort-header-arrow {
+  color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+//Table Items
+.mdc-data-table__cell {
+  font-size: 16px;
+}
+
+//Button for viewing single reports
+.view {
+  cursor: pointer;
+
+  &:hover {
+    color: #e0aa51;
+  }
+}
+
+//Radius for all cards in API
+.card {
+  border-radius: 40px !important;
+}
+
+//Show no highlighted background when dropdown item is highlighted
+.mat-mdc-option:hover:not(.mdc-list-item--disabled), .mat-mdc-option:focus:not(.mdc-list-item--disabled), .mat-mdc-option.mat-mdc-option-active, .mat-mdc-option.mdc-list-item--selected:not(.mat-mdc-option-multiple):not(.mdc-list-item--disabled) {
+  background: none;
+}
+
+//Color of dropdown background when hovered
+.mat-mdc-menu-item:hover:not([disabled]), .mat-mdc-menu-item.cdk-program-focused:not([disabled]), .mat-mdc-menu-item.cdk-keyboard-focused:not([disabled]), .mat-mdc-menu-item-highlighted:not([disabled]) {
+  background: #e0a95181;
+}
+
+//Taking checkboxes away from project selection
+.mat-pseudo-checkbox {
+  display: none !important;
+}
+
+//Color of project when hovered
+.mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+  background: #ca9848;
+}
+
+//Color of project word when selected
+.mdc-list-item--selected .mdc-list-item__primary-text, .mdc-list-item--activated .mdc-list-item__primary-text {
+  color: var(--mdc-theme-primary, white) !important;
+  
+}
+
+//Color of project background when selected
+.mat-mdc-option.mdc-list-item--selected {
+  background-color: #e0aa51;
+}
+
+.id {
+  font-size: 12px;
+  float: right;
+}
+
+
+
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0 !important;
+  position: relative;
+  background: linear-gradient(90deg, #fbd233 0%, #f6bf33 50%, #ef9e33 100%);
+}
+
+app-root {
+  height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+ul#horizontal-list {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+	}
+	ul#horizontal-list li {
+		display: inline;
+	}
+
+p {
+  margin: 0;
+}
+
+.loader,
+.loader:after {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+}
+.loader {
+  margin: 60px auto;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 1.1em solid rgba(50, 50, 50, 0.2);
+  border-right: 1.1em solid rgba(50, 50, 50, 0.2);
+  border-bottom: 1.1em solid rgba(50, 50, 50, 0.2);
+  border-left: 1.1em solid #ffffff;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+
+.spacer {
+  flex: 1;
+}
+
+:root {
+  --color_0: 255, 255, 255;
+  --color_1: 255, 255, 255;
+  --color_2: 0, 0, 0;
+  --color_3: 237, 28, 36;
+  --color_4: 0, 136, 203;
+  --color_5: 255, 203, 5;
+  --color_6: 114, 114, 114;
+  --color_7: 176, 176, 176;
+  --color_8: 255, 255, 255;
+  --color_9: 114, 114, 114;
+  --color_10: 176, 176, 176;
+  --color_11: 255, 255, 255;
+  --color_12: 247, 247, 247;
+  --color_13: 199, 199, 199;
+  --color_14: 117, 117, 117;
+  --color_15: 0, 0, 0;
+  --color_16: 216, 232, 242;
+  --color_17: 140, 188, 219;
+  --color_18: 49, 121, 175;
+  --color_19: 12, 60, 96;
+  --color_20: 7, 33, 54;
+  --color_21: 174, 229, 208;
+  --color_22: 129, 202, 175;
+  --color_23: 49, 176, 129;
+  --color_24: 33, 117, 86;
+  --color_25: 16, 59, 43;
+  --color_26: 210, 172, 247;
+  --color_27: 186, 131, 240;
+  --color_28: 128, 21, 232;
+  --color_29: 85, 14, 155;
+  --color_30: 43, 7, 77;
+  --color_31: 239, 168, 189;
+  --color_32: 223, 124, 154;
+  --color_33: 207, 23, 78;
+  --color_34: 138, 15, 52;
+  --color_35: 69, 8, 26;
+  --font_0: normal normal bold 60px/1.4em brandon-grot-w01-light,
+    brandon-grot-w05-light, sans-serif;
+  --font_1: normal normal normal 16px/1.4em din-next-w01-light,
+    din-next-w02-light, din-next-w10-light, sans-serif;
+  --font_2: normal normal bold 36px/1.4em brandon-grot-w01-light,
+    brandon-grot-w05-light, sans-serif;
+  --font_3: normal normal bold 26px/1.4em brandon-grot-w01-light,
+    brandon-grot-w05-light, sans-serif;
+  --font_4: normal normal normal 20px/1.4em avenir-lt-w01_35-light1475496,
+    avenir-lt-w05_35-light, sans-serif;
+  --font_5: normal normal bold 18px/1.4em avenir-lt-w01_85-heavy1475544,
+    avenir-lt-w05_85-heavy, sans-serif;
+  --font_6: normal normal normal 16px/1.4em avenir-lt-w01_85-heavy1475544,
+    avenir-lt-w05_85-heavy, sans-serif;
+  --font_7: normal normal normal 18px/1.4em avenir-lt-w01_35-light1475496,
+    avenir-lt-w05_35-light, sans-serif;
+  --font_8: normal normal normal 16px/1.4em avenir-lt-w01_35-light1475496,
+    avenir-lt-w05_35-light, sans-serif;
+  --font_9: normal normal normal 14px/1.4em avenir-lt-w01_35-light1475496,
+    avenir-lt-w05_35-light, sans-serif;
+  --font_10: normal normal normal 12px/1.4em din-next-w01-light,
+    din-next-w02-light, din-next-w10-light, sans-serif;
+  --wix-ads-height: 0px;
+  --wix-ads-top-height: 0px;
+  --site-width: 980px;
+  --above-all-z-index: 100000;
+  --portals-z-index: 100001;
+  --minViewportSize: 320;
+  --maxViewportSize: 1920;
+}
+.font_0 {
+  font: var(--font_0);
+  color: rgb(var(--color_20));
+  letter-spacing: 0em;
+}
+.font_1 {
+  font: var(--font_1);
+  color: rgb(var(--color_14));
+  letter-spacing: 0em;
+}
+.font_2 {
+  font: var(--font_2);
+  color: rgb(var(--color_20));
+  letter-spacing: 0em;
+}
+.font_3 {
+  font: var(--font_3);
+  color: rgb(var(--color_15));
+  letter-spacing: 0em;
+}
+.font_4 {
+  font: var(--font_4);
+  color: rgb(var(--color_20));
+  letter-spacing: 0em;
+}
+.font_5 {
+  font: var(--font_5);
+  color: rgb(var(--color_20));
+  letter-spacing: 0em;
+}
+.font_6 {
+  font: var(--font_6);
+  color: rgb(var(--color_20));
+  letter-spacing: 0em;
+}
+.font_7 {
+  font: var(--font_7);
+  color: rgb(var(--color_15));
+  letter-spacing: 0em;
+}
+.font_8 {
+  font: var(--font_8);
+  color: rgb(var(--color_15));
+  letter-spacing: 0em;
+}
+.font_9 {
+  font: var(--font_9);
+  color: rgb(var(--color_15));
+  letter-spacing: 0em;
+}
+.font_10 {
+  font: var(--font_10);
+  color: rgb(var(--color_14));
+  letter-spacing: 0em;
+}
+.color_0 {
+  color: rgb(var(--color_0));
+}
+.color_1 {
+  color: rgb(var(--color_1));
+}
+.color_2 {
+  color: rgb(var(--color_2));
+}
+.color_3 {
+  color: rgb(var(--color_3));
+}
+.color_4 {
+  color: rgb(var(--color_4));
+}
+.color_5 {
+  color: rgb(var(--color_5));
+}
+.color_6 {
+  color: rgb(var(--color_6));
+}
+.color_7 {
+  color: rgb(var(--color_7));
+}
+.color_8 {
+  color: rgb(var(--color_8));
+}
+.color_9 {
+  color: rgb(var(--color_9));
+}
+.color_10 {
+  color: rgb(var(--color_10));
+}
+.color_11 {
+  color: rgb(var(--color_11));
+}
+.color_12 {
+  color: rgb(var(--color_12));
+}
+.color_13 {
+  color: rgb(var(--color_13));
+}
+.color_14 {
+  color: rgb(var(--color_14));
+}
+.color_15 {
+  color: rgb(var(--color_15));
+}
+.color_16 {
+  color: rgb(var(--color_16));
+}
+.color_17 {
+  color: rgb(var(--color_17));
+}
+.color_18 {
+  color: rgb(var(--color_18));
+}
+.color_19 {
+  color: rgb(var(--color_19));
+}
+.color_20 {
+  color: rgb(var(--color_20));
+}
+.color_21 {
+  color: rgb(var(--color_21));
+}
+.color_22 {
+  color: rgb(var(--color_22));
+}
+.color_23 {
+  color: rgb(var(--color_23));
+}
+.color_24 {
+  color: rgb(var(--color_24));
+}
+.color_25 {
+  color: rgb(var(--color_25));
+}
+.color_26 {
+  color: rgb(var(--color_26));
+}
+.color_27 {
+  color: rgb(var(--color_27));
+}
+.color_28 {
+  color: rgb(var(--color_28));
+}
+.color_29 {
+  color: rgb(var(--color_29));
+}
+.color_30 {
+  color: rgb(var(--color_30));
+}
+.color_31 {
+  color: rgb(var(--color_31));
+}
+.color_32 {
+  color: rgb(var(--color_32));
+}
+.color_33 {
+  color: rgb(var(--color_33));
+}
+.color_34 {
+  color: rgb(var(--color_34));
+}
+.color_35 {
+  color: rgb(var(--color_35));
+}
+.backcolor_0 {
+  background-color: rgb(var(--color_0));
+}
+.backcolor_1 {
+  background-color: rgb(var(--color_1));
+}
+.backcolor_2 {
+  background-color: rgb(var(--color_2));
+}
+.backcolor_3 {
+  background-color: rgb(var(--color_3));
+}
+.backcolor_4 {
+  background-color: rgb(var(--color_4));
+}
+.backcolor_5 {
+  background-color: rgb(var(--color_5));
+}
+.backcolor_6 {
+  background-color: rgb(var(--color_6));
+}
+.backcolor_7 {
+  background-color: rgb(var(--color_7));
+}
+.backcolor_8 {
+  background-color: rgb(var(--color_8));
+}
+.backcolor_9 {
+  background-color: rgb(var(--color_9));
+}
+.backcolor_10 {
+  background-color: rgb(var(--color_10));
+}
+.backcolor_11 {
+  background-color: rgb(var(--color_11));
+}
+.backcolor_12 {
+  background-color: rgb(var(--color_12));
+}
+.backcolor_13 {
+  background-color: rgb(var(--color_13));
+}
+.backcolor_14 {
+  background-color: rgb(var(--color_14));
+}
+.backcolor_15 {
+  background-color: rgb(var(--color_15));
+}
+.backcolor_16 {
+  background-color: rgb(var(--color_16));
+}
+.backcolor_17 {
+  background-color: rgb(var(--color_17));
+}
+.backcolor_18 {
+  background-color: rgb(var(--color_18));
+}
+.backcolor_19 {
+  background-color: rgb(var(--color_19));
+}
+.backcolor_20 {
+  background-color: rgb(var(--color_20));
+}
+.backcolor_21 {
+  background-color: rgb(var(--color_21));
+}
+.backcolor_22 {
+  background-color: rgb(var(--color_22));
+}
+.backcolor_23 {
+  background-color: rgb(var(--color_23));
+}
+.backcolor_24 {
+  background-color: rgb(var(--color_24));
+}
+.backcolor_25 {
+  background-color: rgb(var(--color_25));
+}
+.backcolor_26 {
+  background-color: rgb(var(--color_26));
+}
+.backcolor_27 {
+  background-color: rgb(var(--color_27));
+}
+.backcolor_28 {
+  background-color: rgb(var(--color_28));
+}
+.backcolor_29 {
+  background-color: rgb(var(--color_29));
+}
+.backcolor_30 {
+  background-color: rgb(var(--color_30));
+}
+.backcolor_31 {
+  background-color: rgb(var(--color_31));
+}
+.backcolor_32 {
+  background-color: rgb(var(--color_32));
+}
+.backcolor_33 {
+  background-color: rgb(var(--color_33));
+}
+.backcolor_34 {
+  background-color: rgb(var(--color_34));
+}
+.backcolor_35 {
+  background-color: rgb(var(--color_35));
+}
+#SITE_CONTAINER.focus-ring-active
+  :not(.has-custom-focus):not(.ignore-focus):not([tabindex="-1"]):focus,
+#SITE_CONTAINER.focus-ring-active
+  :not(.has-custom-focus):not(.ignore-focus):not([tabindex="-1"]):focus
+  ~ .wixSdkShowFocusOnSibling {
+  box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #116dff !important;
+  z-index: 1;
+}
+[data-mesh-id="SITE_HEADERinlineContent"] {
+  height: auto;
+  width: 100%;
+}
+[data-mesh-id="SITE_HEADERinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="SITE_HEADERinlineContent-gridContainer"] > [id="comp-kkqoqp7f"] {
+  position: relative;
+  margin: 1px 0px 7px calc((100% - 980px) * 0.5);
+  left: 0px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="SOSP_CONTAINER_CUSTOM_IDinlineContent"] {
+  height: auto;
+  width: 980px;
+}
+[data-mesh-id="SOSP_CONTAINER_CUSTOM_IDinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="SOSP_CONTAINER_CUSTOM_IDinlineContent-gridContainer"]
+  > [id="comp-kkso4lu3"] {
+  position: relative;
+  margin: 0px 0px 0 0;
+  left: 0px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="SOSP_CONTAINER_CUSTOM_IDinlineContent-gridContainer"]
+  > [id="comp-kkso4mv8"] {
+  position: relative;
+  margin: 0px 0px 0px 0;
+  left: 12px;
+  grid-area: 2 / 1 / 3 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="SITE_FOOTERinlineContent"] {
+  height: auto;
+  width: 100%;
+  display: flex;
+}
+[data-mesh-id="SITE_FOOTERinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  margin-bottom: -330px;
+  grid-template-rows: repeat(2, min-content) 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="SITE_FOOTERinlineContent-gridContainer"] > [id="comp-kussib5c"] {
+  position: relative;
+  margin: 75px 0px 70px calc((100% - 980px) * 0.5);
+  left: 0px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="SITE_FOOTERinlineContent-gridContainer"] > [id="comp-kkqq7gqf"] {
+  position: relative;
+  margin: 0px 0px 0 calc((100% - 980px) * 0.5);
+  left: 0px;
+  grid-area: 2 / 1 / 3 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="SITE_FOOTERinlineContent-gridContainer"] > [id="comp-l9ejx3r0"] {
+  position: relative;
+  margin: 0px 0px 0px calc((100% - 980px) * 0.5);
+  left: 0px;
+  grid-area: 3 / 1 / 4 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib5cinlineContent"] {
+  height: auto;
+  width: 980px;
+}
+[data-mesh-id="comp-kussib5cinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="comp-kussib5cinlineContent-gridContainer"]
+  > [id="comp-kussib6q"] {
+  position: relative;
+  margin: 0px 0px 0px 0;
+  left: 0px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kkqoqp9minlineContent"] {
+  height: auto;
+  width: 100%;
+}
+[data-mesh-id="comp-kkqoqp9minlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="comp-kkqoqp9minlineContent-gridContainer"]
+  > [id="comp-ku4j0qqv"] {
+  position: relative;
+  margin: 18px 0px 22px calc((100% - 245px) * 0);
+  left: -71px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kkqoqp9minlineContent-gridContainer"]
+  > [id="comp-kkwcawo8"] {
+  position: relative;
+  margin: 68px 0px 70px calc((100% - 245px) * 0);
+  left: 60px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kkqos95uinlineContent"] {
+  height: auto;
+  width: 100%;
+}
+[data-mesh-id="comp-kkqos95uinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: 181px;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="comp-kkqos95uinlineContent-gridContainer"]
+  > [id="comp-kkqp2iqq"] {
+  position: relative;
+  margin: 74px 0px 10px calc((100% - 735px) * 1);
+  left: 275px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent"] {
+  height: auto;
+  width: 980px;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  grid-template-rows: repeat(5, min-content) 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib6t"] {
+  position: relative;
+  margin: 31px 0px 37px 0;
+  left: 422px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib721"] {
+  position: relative;
+  margin: 0px 0px 53px 0;
+  left: 200px;
+  grid-area: 2 / 1 / 3 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib7f"] {
+  position: relative;
+  margin: 0px 0px 55px 0;
+  left: 520px;
+  grid-area: 2 / 1 / 3 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib7h2"] {
+  position: relative;
+  margin: 0px 0px 52px 0;
+  left: 200px;
+  grid-area: 3 / 1 / 4 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib7j2"] {
+  position: relative;
+  margin: 0px 0px 52px 0;
+  left: 520px;
+  grid-area: 3 / 1 / 4 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib7l2"] {
+  position: relative;
+  margin: 0px 0px 23px 0;
+  left: 200px;
+  grid-area: 4 / 1 / 5 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib7t1"] {
+  position: relative;
+  margin: 0px 0px 14px 0;
+  left: 196px;
+  grid-area: 5 / 1 / 6 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kussib6qinlineContent-gridContainer"]
+  > [id="comp-kussib802"] {
+  position: relative;
+  margin: 0px 0px 23px 0;
+  left: 240px;
+  grid-area: 6 / 1 / 7 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kkqq7gr1inlineContent"] {
+  height: auto;
+  width: 100%;
+}
+[data-mesh-id="comp-kkqq7gr1inlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="comp-kkqq7gr1inlineContent-gridContainer"]
+  > [id="comp-kkqqd13c"] {
+  position: relative;
+  margin: 52px 0px 13px calc((100% - 490px) * 0.5);
+  left: 49px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kkqq7gr1inlineContent-gridContainer"]
+  > [id="comp-kkqsc1w0"] {
+  position: relative;
+  margin: 0px 0px 69px calc((100% - 490px) * 0.5);
+  left: 47px;
+  grid-area: 2 / 1 / 3 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kkqq8cxdinlineContent"] {
+  height: auto;
+  width: 100%;
+}
+[data-mesh-id="comp-kkqq8cxdinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: 265px;
+  grid-template-rows: min-content 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="comp-kkqq8cxdinlineContent-gridContainer"]
+  > [id="comp-kkqunt0c"] {
+  position: relative;
+  margin: 56px 0px 15px calc((100% - 490px) * 0.5);
+  left: 166px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-kkqq8cxdinlineContent-gridContainer"]
+  > [id="comp-kkv9w8u9"] {
+  position: relative;
+  margin: 0px 0px 10px calc((100% - 490px) * 0.5);
+  left: 166px;
+  grid-area: 2 / 1 / 3 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[data-mesh-id="comp-l9ejx3spinlineContent"] {
+  height: auto;
+  width: 100%;
+}
+[data-mesh-id="comp-l9ejx3spinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: 400px;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+}
+[data-mesh-id="comp-l9ejx3spinlineContent-gridContainer"]
+  > [id="comp-l9ejymd7"] {
+  position: relative;
+  margin: 11px 0px 10px calc((100% - 980px) * 0.5);
+  left: 425px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+[id="soapAfterPagesContainer"].page-without-sosp
+  [data-mesh-id="soapAfterPagesContainerinlineContent"] {
+  height: auto;
+  width: 100%;
+  position: static;
+  min-height: auto;
+  padding-bottom: 0px;
+  box-sizing: border-box;
+}
+[id="soapAfterPagesContainer"].page-without-sosp
+  [data-mesh-id="soapAfterPagesContainerinlineContent-gridContainer"]
+  > [id="CONTROLLER_COMP_CUSTOM_ID"] {
+  position: absolute;
+  top: 15px;
+  left: 21px;
+  margin-left: calc((100% - 980px) * 0.5);
+}
+[id="soapAfterPagesContainer"].page-with-sosp
+  [data-mesh-id="soapAfterPagesContainerinlineContent"] {
+  height: auto;
+  width: 100%;
+  display: flex;
+}
+[id="soapAfterPagesContainer"].page-with-sosp
+  [data-mesh-id="soapAfterPagesContainerinlineContent-gridContainer"] {
+  position: static;
+  display: grid;
+  height: auto;
+  width: 100%;
+  min-height: auto;
+  margin-top: -127px;
+  grid-template-rows: 1fr;
+  grid-template-columns: 100%;
+  padding-bottom: 0px;
+  box-sizing: border-box;
+}
+[id="soapAfterPagesContainer"].page-with-sosp
+  [data-mesh-id="soapAfterPagesContainerinlineContent-gridContainer"]
+  > [id="CONTROLLER_COMP_CUSTOM_ID"] {
+  position: absolute;
+  top: -174px;
+  left: 21px;
+  margin-left: calc((100% - 980px) * 0.5);
+}
+[id="soapAfterPagesContainer"].page-with-sosp
+  [data-mesh-id="soapAfterPagesContainerinlineContent-gridContainer"]
+  > [id="SOSP_CONTAINER_CUSTOM_ID"] {
+  position: relative;
+  margin: 0px 0px 0 calc((100% - 980px) * 0.5);
+  left: 0px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: start;
+  align-self: start;
+}
+#comp-kksqnwkb {
+  width: 94px;
+  height: 94px;
+  justify-self: end;
+  align-self: end;
+  position: absolute;
+  grid-area: 1 / 1 / 2 / 2;
+  pointer-events: auto;
+}
+#comp-kkso4mv8 {
+  width: 956px;
+  height: 40px;
+}
+#comp-ku4j0qqv {
+  width: 142px;
+  height: 141px;
+}
+#comp-kkwcawo8 {
+  width: 322px;
+  height: 43px;
+}
+#comp-kkqp2iqq {
+  width: 441px;
+  height: 31px;
+}
+#comp-kussib6t {
+  width: 146px;
+  height: 43px;
+}
+#comp-kussib721 {
+  width: 271px;
+  height: 58px;
+}
+#comp-kussib7f {
+  width: 270px;
+  height: 56px;
+}
+#comp-kussib7h2 {
+  width: 271px;
+  height: 56px;
+}
+#comp-kussib7j2 {
+  width: 270px;
+  height: 56px;
+}
+#comp-kussib7l2 {
+  width: 591px;
+  height: 116px;
+}
+#comp-kussib7t1 {
+  width: 600px;
+  height: 51px;
+}
+#comp-kussib802 {
+  width: 510px;
+  height: 21px;
+}
+#comp-kkqqd13c {
+  width: 440px;
+  height: 29px;
+}
+#comp-kkqsc1w0 {
+  width: 447px;
+  height: 102px;
+}
+#comp-kkqunt0c {
+  width: 240px;
+  height: 29px;
+}
+#comp-kkv9w8u9 {
+  width: 317px;
+  height: 93px;
+}
+#comp-l9ejymd7 {
+  width: 137px;
+  height: 39px;
+}
+#SITE_HEADER-placeholder {
+  height: 189px;
+}
+#masterPage {
+  left: 0;
+  margin-left: 0;
+  width: 100%;
+  min-width: 980px;
+}
+#SITE_HEADER {
+  left: 0;
+  margin-left: 0;
+  width: 100%;
+  min-width: 980px;
+  z-index: 50;
+  --above-all-in-container: 10000;
+}
+#PAGES_CONTAINER {
+  left: 0;
+  margin-left: 0;
+  width: 100%;
+  min-width: 980px;
+  --pinned-layer-in-container: 51;
+  --above-all-in-container: 49;
+}
+#SOSP_CONTAINER_CUSTOM_ID {
+  width: 980px;
+  --pinned-layer-in-container: 53;
+  --above-all-in-container: 49;
+}
+#SITE_FOOTER {
+  left: 0;
+  margin-left: 0;
+  width: 100%;
+  min-width: 980px;
+  --pinned-layer-in-container: 54;
+  --above-all-in-container: 49;
+}
+#comp-kkqoqp7f {
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(100% - 80px - 80px);
+  min-width: 980px;
+}
+#SITE_PAGES {
+  left: 0;
+  margin-left: 0;
+  width: 100%;
+  min-width: 980px;
+}
+#comp-kkso4lu3 {
+  width: 980px;
+  height: 250px;
+}
+#comp-kussib5c {
+  width: 980px;
+}
+#comp-kkqq7gqf {
+  left: 0;
+  margin-left: 0;
+  width: 100%;
+  min-width: 980px;
+}
+#comp-l9ejx3r0 {
+  left: 0;
+  margin-left: 0;
+  width: 100%;
+  min-width: 980px;
+}
+#comp-kkqoqp9m {
+  width: 245px;
+}
+#comp-kkqos95u {
+  width: 735px;
+}
+#comp-kussib6q {
+  width: 980px;
+}
+#comp-kkqq7gr1 {
+  width: 490px;
+}
+#comp-kkqq8cxd {
+  width: 490px;
+}
+#comp-l9ejx3sp {
+  width: 980px;
+}
+#comp-kksqnwkb-pinned-layer {
+  z-index: calc(var(--pinned-layers-in-page, 0) + 55);
+  --above-all-in-container: 10000;
+}
+#masterPage.landingPage #SITE_HEADER {
+  display: none;
+}
+#masterPage.landingPage #CONTROLLER_COMP_CUSTOM_ID {
+  display: none;
+}
+#masterPage.landingPage #SOSP_CONTAINER_CUSTOM_ID {
+  display: none;
+}
+#masterPage.landingPage #SITE_FOOTER {
+  display: none;
+}
+#masterPage.landingPage #SITE_HEADER-placeholder {
+  display: none;
+}
+#masterPage.landingPage #SITE_FOOTER-placeholder {
+  display: none;
+}
+#masterPage:not(.landingPage) #PAGES_CONTAINER {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+#CONTROLLER_COMP_CUSTOM_ID {
+  --pinned-layer-in-container: 52;
+  --above-all-in-container: 49;
+}
+@font-face {
+  font-display: block;
+  font-family: "Brandon-Grot-W01-Light";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/69b40392-453a-438a-a121-a49e5fbc9213.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/9362bca5-b362-4543-a051-2129e2def911.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/85060878-ca6c-43cc-ac31-7edccfdca71b.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/47f089a6-c8ce-46fa-b98f-03b8c0619d8a.svg#47f089a6-c8ce-46fa-b98f-03b8c0619d8a")
+      format("svg");
+}
+@font-face {
+  font-family: "Brandon-Grot-W05-Light";
+  src: url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/BrandonGrot/v1/BrandonGrotesqueCondW05-Lt.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/BrandonGrot/v1/BrandonGrotesqueCondW05-Lt.woff")
+      format("woff");
+}
+@font-face {
+  font-display: block;
+  font-family: "DIN-Next-W01-Light";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/3e0b2cd7-9657-438b-b4af-e04122e8f1f7.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/3e0b2cd7-9657-438b-b4af-e04122e8f1f7.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/bc176270-17fa-4c78-a343-9fe52824e501.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/3516f91d-ac48-42cd-acfe-1be691152cc4.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/d1b1e866-a411-42ba-8f75-72bf28e23694.svg#d1b1e866-a411-42ba-8f75-72bf28e23694")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "DIN-Next-W02-Light";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/48e5a0e1-2d56-46e5-8fc4-3d6d5c973cbf.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/48e5a0e1-2d56-46e5-8fc4-3d6d5c973cbf.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/07d62b21-8d7a-4c36-be86-d32ab1089972.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/c0050890-bbed-44b9-94df-2611d72dbb06.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/9f774d17-c03a-418e-a375-34f3beecbc7a.svg#9f774d17-c03a-418e-a375-34f3beecbc7a")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "DIN-Next-W10-Light";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/3d009cd7-c8fe-40c0-93da-74f4ea8c530b.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/3d009cd7-c8fe-40c0-93da-74f4ea8c530b.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/a9e95a29-98a7-404a-90ee-1929ad09c696.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0a7663fd-eae8-4e50-a67a-225271f8cceb.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/58ae9be9-5d95-44b6-8b6c-e6da6a46822c.svg#58ae9be9-5d95-44b6-8b6c-e6da6a46822c")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "Avenir-LT-W01_35-Light1475496";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/edefe737-dc78-4aa3-ad03-3c6f908330ed.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/edefe737-dc78-4aa3-ad03-3c6f908330ed.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0078f486-8e52-42c0-ad81-3c8d3d43f48e.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/908c4810-64db-4b46-bb8e-823eb41f68c0.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4577388c-510f-4366-addb-8b663bcc762a.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/b0268c31-e450-4159-bfea-e0d20e2b5c0c.svg#b0268c31-e450-4159-bfea-e0d20e2b5c0c")
+      format("svg");
+}
+@font-face {
+  font-family: "Avenir-LT-W05_35-Light";
+  src: url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/Avenir_Family_Pack/v1/AvenirLTW05-35Light.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/Avenir_Family_Pack/v1/AvenirLTW05-35Light.woff")
+      format("woff");
+}
+@font-face {
+  font-display: block;
+  font-family: "Avenir-LT-W01_85-Heavy1475544";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/6af9989e-235b-4c75-8c08-a83bdaef3f66.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/6af9989e-235b-4c75-8c08-a83bdaef3f66.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/d513e15e-8f35-4129-ad05-481815e52625.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/61bd362e-7162-46bd-b67e-28f366c4afbe.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/ccd17c6b-e7ed-4b73-b0d2-76712a4ef46b.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/20577853-40a7-4ada-a3fb-dd6e9392f401.svg#20577853-40a7-4ada-a3fb-dd6e9392f401")
+      format("svg");
+}
+@font-face {
+  font-family: "Avenir-LT-W05_85-Heavy";
+  src: url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/Avenir_Family_Pack/v1/AvenirLTW05-85Heavy.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/Avenir_Family_Pack/v1/AvenirLTW05-85Heavy.woff")
+      format("woff");
+}
+@font-face {
+  font-display: block;
+  font-family: "Futura-LT-W01-Light";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/26091050-06ef-4fd5-b199-21b27c0ed85e.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/cca525a8-ad89-43ae-aced-bcb49fb271dc.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/88cc7a39-1834-4468-936a-f3c25b5d81a1.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/14d6bf5d-15f1-4794-b18e-c03fb9a5187e.svg#14d6bf5d-15f1-4794-b18e-c03fb9a5187e")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "Helvetica-W01-Roman";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/ea95b44a-eab7-4bd1-861c-e73535e7f652.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/ea95b44a-eab7-4bd1-861c-e73535e7f652.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4021a3b9-f782-438b-aeb4-c008109a8b64.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/669f79ed-002c-4ff6-965c-9da453968504.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/d17bc040-9e8b-4397-8356-8153f4a64edf.svg#d17bc040-9e8b-4397-8356-8153f4a64edf")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "Helvetica-W02-Roman";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e4bd4516-4480-43df-aa6e-4e9b9029f53e.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e4bd4516-4480-43df-aa6e-4e9b9029f53e.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/b56b944e-bbe0-4450-a241-de2125d3e682.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/7da02f05-ae8b-43a1-aeb9-83b3c0527c06.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/66cac56e-d017-4544-9d0c-f7d978f0c5c2.svg#66cac56e-d017-4544-9d0c-f7d978f0c5c2")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "Helvetica-LT-W10-Roman";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/686a6a06-e711-4bd2-b393-8504a497bb3c.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/686a6a06-e711-4bd2-b393-8504a497bb3c.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/6f8d1983-4d34-4fa4-9110-988f6c495757.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/7903ee3f-e9ab-4bdc-b7d2-d232de2da580.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/9c58e9ea-fdea-4b9c-b0f9-0a2157389ed0.svg#9c58e9ea-fdea-4b9c-b0f9-0a2157389ed0")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "Futura-LT-W01-Book";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/8bf38806-3423-4080-b38f-d08542f7e4ac.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e2b9cbeb-fa8e-41cd-8a6a-46044b29ba52.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/c2a69697-4f06-4764-abd4-625031a84e31.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/dc423cc1-bf86-415c-bc7d-ad7dde416a34.svg#dc423cc1-bf86-415c-bc7d-ad7dde416a34")
+      format("svg");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Brandon-Grot-W01-Light";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e00ba30a-0bf3-4c76-9392-8641fa237a92.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/69b40392-453a-438a-a121-a49e5fbc9213.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/9362bca5-b362-4543-a051-2129e2def911.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/85060878-ca6c-43cc-ac31-7edccfdca71b.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/47f089a6-c8ce-46fa-b98f-03b8c0619d8a.svg#47f089a6-c8ce-46fa-b98f-03b8c0619d8a")
+      format("svg");
+}
+@font-face {
+  font-family: "Brandon-Grot-W05-Light";
+  src: url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/BrandonGrot/v1/BrandonGrotesqueCondW05-Lt.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/fonts/BrandonGrot/v1/BrandonGrotesqueCondW05-Lt.woff")
+      format("woff");
+}
+@font-face {
+  font-display: block;
+  font-family: "Futura-LT-W01-Light";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2b40e918-d269-4fd9-a572-19f5fec7cd7f.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/26091050-06ef-4fd5-b199-21b27c0ed85e.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/cca525a8-ad89-43ae-aced-bcb49fb271dc.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/88cc7a39-1834-4468-936a-f3c25b5d81a1.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/14d6bf5d-15f1-4794-b18e-c03fb9a5187e.svg#14d6bf5d-15f1-4794-b18e-c03fb9a5187e")
+      format("svg");
+}
+@font-face {
+  font-display: block;
+  font-family: "Futura-LT-W01-Book";
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix");
+  src: url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/cf053eae-ba1f-44f3-940c-a34b68ccbbdf.eot?#iefix")
+      format("eot"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/8bf38806-3423-4080-b38f-d08542f7e4ac.woff2")
+      format("woff2"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e2b9cbeb-fa8e-41cd-8a6a-46044b29ba52.woff")
+      format("woff"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/c2a69697-4f06-4764-abd4-625031a84e31.ttf")
+      format("truetype"),
+    url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/dc423cc1-bf86-415c-bc7d-ad7dde416a34.svg#dc423cc1-bf86-415c-bc7d-ad7dde416a34")
+      format("svg");
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
