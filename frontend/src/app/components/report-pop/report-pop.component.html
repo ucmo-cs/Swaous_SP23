@@ -1,9 +1,11 @@
 <div class="container">
+    <!--REPORT POP UP MAT TABLE-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <h2 mat-dialog-title>{{report.empName}}'s Report ({{report.submittedAt}})</h2>
         <mat-dialog-content>
             <table id="reportPDF" #reportPDF>
                 <tr>
+                    <!--TABLE LABELS-->
                     <td style="padding-right: 15px; border-bottom: none;">
                         <mat-label><i class="fa fa-user"></i>  Submitter</mat-label>
                             <h4 id="name" name="name" style="color: black;">{{report.empName}}</h4>
@@ -22,6 +24,7 @@
                         </div>
                 </tr>
             </table>
+            <!--BUTTONS FOR POP UP AS WELL AS OPTIONS FOR TRIGGER TO EMAIL AND EXPORT THE REPORT-->
         </mat-dialog-content>
         <div class="viewButtons">
             <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="!loading" style="padding-right: 10px;"></div>

@@ -39,6 +39,19 @@ functions:
               - Content-Type
               - Access-Control-Allow-Origin
             allowCredentials: false
+
+  createProjectAdmin:
+    handler: handler/createProjectAdmin.createProjectAdmin
+    events:
+      - http:
+          path: admin/{adminid}/projects/newproject
+          method: post
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
   
   listReports:
     handler: handler/listReports.listReports
@@ -97,6 +110,19 @@ functions:
     events:
       - http:
           path: admin/{adminid}/emp/{empid}/reports/{reportid}/delete
+          method: delete
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Access-Control-Allow-Origin
+            allowCredentials: false
+
+  deleteProjectAdmin:
+    handler: handler/deleteProjectAdmin.deleteProjectAdmin
+    events:
+      - http:
+          path: admin/{adminid}/projects/{projectid}/delete
           method: delete
           cors:
             origin: '*'

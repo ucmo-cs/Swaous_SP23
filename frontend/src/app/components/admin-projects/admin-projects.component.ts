@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { IUser, AuthService } from '../../services/auth.service';
 import { ApiService } from 'src/app/services/api.service';
-import { ReportPopComponent } from '../report-pop/report-pop.component';
+import { AdminPopUpComponent } from '../admin-pop-up/admin-pop-up.component';
 import { Title } from '@angular/platform-browser';
 
 import jsPDF from 'jspdf';
@@ -15,20 +15,20 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfMake from 'html-to-pdfmake';
 
 @Component({
-   selector: 'app-admin',
-   templateUrl: './admin.component.html',
-   styleUrls: ['./admin.component.scss']
+   selector: 'app-admin-projects',
+   templateUrl: './admin-projects.component.html',
+   styleUrls: ['./admin-projects.component.scss']
 })
 
-export class AdminComponent implements AfterViewInit {
+export class AdminProjectsComponent implements AfterViewInit {
   loading: boolean;
   user: IUser;
-  reports: any;
+  projects: any;
 
-  title = 'reportspdf';
-  @ViewChild('reportsPDF') reportsPDF: ElementRef;
+  title = 'projectspdf';
+  @ViewChild('projectsPDF') projectsPDF: ElementRef;
 
-  displayedColumns: string[] = ['empName', 'submittedAt', 'projects', 'reportStatus'];
+  displayedColumns: string[] = ['projectid', 'name', 'description', 'submittedAt', 'deadline'];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -41,17 +41,17 @@ export class AdminComponent implements AfterViewInit {
     private titleService: Title) {
       this.loading = false;
       this.user = {} as IUser;
-      this.titleService.setTitle("Admin | ROC Swaous");
+      this.titleService.setTitle("Projects Overview | ROC Swaous");
   }
-//CALL GETUSER AND SET ARRAYS FOR THE REPORTS
+//LISTENS FOR TRTIGGER AND SETS IP A TABLE FOR PROJECT DETAILS FROM AN API
   public ngAfterViewInit(): void {
     this.authService.getUser().then((user:any) => {
       this.user = user.attributes;
 
-      this.apiService.getAllReports(user.attributes.sub).subscribe(data => {
-        this.reports = Array.from(data.Items);
+      this.apiService.getProjects().subscribe(data => {
+        this.projects = Array.from(data.Items);
 
-        this.dataSource = new MatTableDataSource(this.reports);
+        this.dataSource = new MatTableDataSource(this.projects);
         this.changeDetectorRef.detectChanges();
 
         this.dataSource.sort = this.sort;
@@ -72,24 +72,33 @@ export class AdminComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-//CONTENTS FOR REPORT
+
   public export(): void {
     const doc = new jsPDF();
-    const reportsPDF = this.reportsPDF.nativeElement;
-    var html = htmlToPdfMake(reportsPDF.innerHTML);
+    const projectsPDF = this.projectsPDF.nativeElement;
+    var html = htmlToPdfMake(projectsPDF.innerHTML);
     const docDefinition = { content: html };
 
     pdfMake.createPdf(docDefinition).open()
   }
-//ANIMATION FOR REPORT POP-UP
-  public viewReport(empId: string, reportId: string): void {
-    this.dialog.open(ReportPopComponent, {
+//ANIMATION FOR ADMIN POP-UP
+  public addProject(): void {
+    this.dialog.open(AdminPopUpComponent, {
       width: "700px",
-      panelClass: ['animate__animated', 'animate__fadeInDown'],
-      data: {
-        empId: empId,
-        reportId: reportId
-      }
+      panelClass: ['animate__animated', 'animate__fadeInDown']
     });
+  }
+//IF THE USER ATTEMPTS TO REMOVE A PROJECT NOTIFY USER THAT PROJECT IS REMOVED
+  public deleteProject(projectId: string, name: string): void {
+    this.loading = true;
+    this.apiService.deleteProject(this.user.sub, projectId).subscribe({
+      next: () => {
+        window.alert("Project removed! Congratulations on completing " + name);
+        window.location.reload();
+      },
+      error: () => {
+        console.log('ERROR');
+      }
+    })
   }
 }

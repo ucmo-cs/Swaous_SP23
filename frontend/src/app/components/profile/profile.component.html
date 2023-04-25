@@ -6,6 +6,8 @@
     <div *ngIf="loading" class="container">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <mat-card class="card" style="width: 500px;">
+            <!--SETS USERS NAME FROM INSERTED NAME ON SIGN ON-->
+            <!--FORM FOR USER PROFILE-->
             <h1>Update {{user.name}}'s Information</h1>
             <form [formGroup]="updateForm">
             <mat-label><i class="fa fa-user"></i> Name</mat-label>

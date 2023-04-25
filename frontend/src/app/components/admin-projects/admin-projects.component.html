@@ -1,0 +1,74 @@
+<figure *ngIf="!loading" style="text-align: center;">
+    <img width="250" height="250" alt="ROC" src="../assets/logo.webp" />
+    <figcaption><h1>Loading...</h1></figcaption>
+  </figure>
+  
+  <div *ngIf="loading" class="container">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <!--TABLE FOR ONGOING PROJECTS USES ANGULAR SERVICES TO INSERT THE INFORMATION INTO THE MAT TABLE-->
+    <mat-card class="card" style="width: 90%;">
+      <mat-card-header>
+        <h1>Ongoing Projects</h1>
+      </mat-card-header>
+  
+      <mat-card-content id="projectsPDF" #projectsPDF *ngIf="projects.length > 0 && loading">
+        <table mat-table [dataSource]="dataSource" matSort>
+  
+          <ng-container matColumnDef="projectid">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Project ID</th>
+            <td mat-cell *matCellDef="let row">{{row.projectId}}</td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row">{{row.name}}</td>
+          </ng-container>
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+              <td mat-cell *matCellDef="let row">
+                {{row.description}}  
+                <button mat-raised-button class="filledEnd" mat-dialog-close (click)="deleteProject(row.projectId,row.name)">End</button>
+              </td>
+          </ng-container>
+          <ng-container matColumnDef="submittedAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</th>
+              <td mat-cell *matCellDef="let row">{{row.submittedAt}}</td>
+          </ng-container>
+          <ng-container matColumnDef="deadline">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Deadline</th>
+              <td mat-cell *matCellDef="let row">{{row.deadline}}</td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <!--DISPLAY IF THERE ARE NOT ANY REPORTS SUBMITTED OR IN PLACE-->
+          <div *matNoDataRow>
+              <td style=" font-size: 25px; text-align: center;"><b>No data with filter "{{input.value}}"</b></td>
+              <td><img width="350" height="250" alt="EMPTY" src="../../../assets/RisenOneCat.gif" style="text-align: center;" /></td>
+          </div>
+        </table>
+  
+        
+  <!--BUTTONS FOR TABLE-->
+        <div class="tableButtons">
+          <mat-form-field style="padding-right: 2%;">
+            <mat-label><i class="fa fa-filter"></i> Filter</mat-label>
+            <input type="text" placeholder="ex. FLP" (keyup)="filter($event)" matInput #input />
+          </mat-form-field>
+          <button mat-raised-button class="filled" (click)="addProject()">Add Project</button>
+          <div class="divider"></div>
+          <button mat-raised-button class="unfilled" (click)="export()">Export Table</button>
+  
+          <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10]" style="display: inline-block; padding-left: 28%;"></mat-paginator>
+        </div>
+      </mat-card-content>
+      <!--PROMPT A USER WITH NO REPORTS TO ADD AND CREATE A PROJECT-->
+      <mat-card-content *ngIf="projects.length == 0 && loading">
+        <img style="display: block; margin: auto;" width="350" height="250" alt="EMPTY" src="../../../assets/RisenOneCat.gif" />
+        <h3 style="text-align: center;">No ongoing projects, but you can add one by pressing the button below!</h3>
+        <div class="tableButtons">
+          <button mat-raised-button class="filled" (click)="addProject()">Add Project</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

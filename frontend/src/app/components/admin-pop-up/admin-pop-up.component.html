@@ -1,0 +1,41 @@
+<div class="container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<!--TABLE FOR ADDING A REPORT, USES MAT-FORM FOR SIMPLICITY-->
+    <h2 mat-dialog-title>Add Report</h2>
+        <mat-dialog-content [formGroup]="projectForm">
+            <table>
+                <tr>
+                    <td style="padding-right: 15px; border-bottom: none;">
+                        <mat-label><i class="fa fa-project-diagram"></i>  Project ID</mat-label>
+                        <mat-form-field class="projectId">
+                            <input type="text" id="projectId" name="projectId" placeholder="ex. FEMA-042123-01" matInput formControlName="projectId" />
+                        </mat-form-field>
+                        <mat-label><i class="fa fa-pen"></i> Project Name</mat-label>
+                        <mat-form-field class="name">
+                            <input type="text" id="name" name="name" matInput formControlName="name" />
+                        </mat-form-field>
+                        <mat-label><i class="fa fa-calendar"></i> Start Date</mat-label><i class="far fa-check-square" style="padding: 5px 5px; float: right; color: green; font-size: 10px;">  Auto-filled</i>
+                        <mat-form-field class="submittedAt">
+                            <input type="text" id="submittedAt" name="submittedAt" style="color: gray;" matInput formControlName="submittedAt" [readonly]="true" />
+                        </mat-form-field>
+                        <mat-label><i class="fa fa-stopwatch"></i> Deadline</mat-label>
+                        <mat-form-field class="deadline">
+                            <input type="text" id="deadline" name="deadline" matInput formControlName="deadline" [matDatepicker]="deadlinePicker" (click)="deadlinePicker.open()" />
+                            <mat-datepicker-toggle matSuffix [for]="deadlinePicker"></mat-datepicker-toggle>
+                            <mat-datepicker #deadlinePicker></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                    <td style="padding-right: 15px; border-bottom: none;">
+                        <mat-label><i class="fa fa-sticky-note"></i> Description</mat-label>
+                        <textarea class="description" type="text" id="description" name="description" placeholder="Description goes here..." matInput formControlName="description"></textarea>
+                    </td>
+                    </tr>
+            </table>
+        </mat-dialog-content>
+        <mat-dialog-actions class="actions">
+            <!--POP UP BUTTONS -->
+            <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="!loading" style="padding-right: 10px;"></div>
+            <button mat-raised-button class="unfilled" mat-dialog-close (click)="close()">Cancel</button>
+            <button mat-raised-button class="filled" [disabled]="projectForm.invalid" (click)="submit()">Start Project</button>
+        </mat-dialog-actions>
+</div>

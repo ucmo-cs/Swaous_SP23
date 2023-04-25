@@ -44,7 +44,7 @@ export class HomeComponent implements AfterViewInit {
       this.user = {} as IUser;
       this.titleService.setTitle("User Reports | ROC Swaous");
   }
-
+//CALL GETUSER AND SET ARRAYS FOR THE REPORTS
   public ngAfterViewInit(): void {
     this.authService.getUser().then((user:any) => {
       this.user = user.attributes;
@@ -73,7 +73,7 @@ export class HomeComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
+//CONTENTS FOR REPORT
   public export(): void {
     const doc = new jsPDF();
     const reportsPDF = this.reportsPDF.nativeElement;
@@ -82,7 +82,7 @@ export class HomeComponent implements AfterViewInit {
 
     pdfMake.createPdf(docDefinition).open()
   }
-
+//ANIMATION POP-UP
   public addReport(): void {
     this.dialog.open(PopUpComponent, {
       width: "700px",

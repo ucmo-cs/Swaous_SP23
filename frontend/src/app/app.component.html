@@ -10,11 +10,14 @@
         <button mat-button class="menu" [matMenuTriggerFor]="menu">
           <i class="fa fa-bars" style="cursor: pointer;"></i>
         </button>
+
+  <!-- CASES FOR OPTIONS DEPENDING ON THE LOGGED ON USER-->      
         <mat-menu #menu="matMenu" xPosition="before">
           <a mat-menu-item *ngIf="!user || !isAuthenticated" routerLink="/signin"><i class="fa fa-sign-in-alt"></i>  Sign In</a>
           <a mat-menu-item *ngIf="!user || !isAuthenticated" routerLink="/signup"><i class="fa fa-user-plus"></i>  Sign Up</a>
           <a mat-menu-item *ngIf="user && isAuthenticated && !isAdmin" routerLink="/{{user.sub}}/reports"><i class="fa fa-envelope-open-text"></i>  Reports</a>
           <a mat-menu-item *ngIf="user && isAuthenticated && isAdmin" routerLink="/admin"><i class="fa fa-users"></i>  User Reports</a>
+          <a mat-menu-item *ngIf="user && isAuthenticated && isAdmin" routerLink="/admin/projects"><i class="fa fa-project-diagram"></i>  Projects</a>
           <a mat-menu-item *ngIf="user && isAuthenticated" routerLink="/{{user.sub}}/profile"><i class="fa fa-user-circle"></i>  Profile</a>
           <a mat-menu-item *ngIf="user && isAuthenticated" routerLink="/signin" (click)="signOut()"><i class="fa fa-sign-out-alt"></i>  Logout</a>
         </mat-menu>

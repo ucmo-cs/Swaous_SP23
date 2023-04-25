@@ -9,9 +9,12 @@ import { Title } from '@angular/platform-browser';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
+
+//SIGN IN CLASS WITH CONSTRUCTOR AND SETS AND INITILIZES PARAMATERS
 export class SigninComponent {
   signinForm: any;
   loading: boolean;
+  hide: boolean;
   user: IUser;
 
   constructor(
@@ -20,6 +23,7 @@ export class SigninComponent {
     private authService: AuthService,
     private titleService: Title) {
     this.loading = false;
+    this.hide = true;
     this.user = {} as IUser;
     this.titleService.setTitle("Sign In | ROC Swaous");
   }
@@ -37,19 +41,7 @@ export class SigninComponent {
     console.log(this.signinForm);
     this.loading = false;
   }
-
-  showPassword() {
-    const toggle = document.getElementById('togglePassword');
-    var pswd = document.getElementById("pswd");
-    var type = pswd.getAttribute('type') === 'password' ? 'text' : 'password';
-    
-    pswd.setAttribute('type', type);
-
-    var eye = toggle.getAttribute('class') === 'far fa-eye' ? 'far fa-eye-slash' : 'far fa-eye';
-
-    toggle.setAttribute('class', eye);
-  }
-
+// CREATES USER OBJECT AND HANDLE AUTHENTICATION AND CAN INFORM USERS OF INCORRECT PASSWORD AND OR EMAIL
   public signIn(): void {
     this.loading = true;
     this.user.email = this.signinForm.value.email;
@@ -68,8 +60,6 @@ export class SigninComponent {
             window.location.reload();
           });
         }
-        
-        
       });
     }).catch(() => {
       this.loading = false;

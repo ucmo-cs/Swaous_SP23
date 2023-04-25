@@ -16,6 +16,8 @@ import htmlToPdfMake from 'html-to-pdfmake';
   templateUrl: './report-pop.component.html',
   styleUrls: ['./report-pop.component.scss']
 })
+
+//PROPERTIES FOR REPORT POP-UP AS WELL AS SETTING AND INITILIZING DEPENDENCIES
 export class ReportPopComponent implements OnInit {
   reportForm: any;
   loading: boolean;
@@ -44,6 +46,8 @@ export class ReportPopComponent implements OnInit {
   public ngOnInit(): void {
     this.authService.getUser().then((user:any) => {
       this.user = user.attributes;
+
+      //CHECKS USER ATTRIBUTES TO VIEW IF THE USER IS AN ADMIN OR NOT AND PASS THE ATTRIBUTES BASED OFF OF EACH
       
       if(user.attributes.sub == "9a2c5f3d-45b8-4c2b-b5cf-f13a17dd693b") {
         this.isAdmin = true;
@@ -70,7 +74,7 @@ export class ReportPopComponent implements OnInit {
 
     pdfMake.createPdf(docDefinition).open()
   }
-
+//POP-UP FOR SENDING EMAILS AND PASSES CONSTRICTORS SET FROM IT
   public sendEmail(emailData: any): void {
     this.apiService.sendEmail(emailData, this.user.sub, this.report.reportId).subscribe({
       next: () => {

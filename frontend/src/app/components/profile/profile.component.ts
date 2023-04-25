@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean;
   user: IUser;
 
+  //CONSTRUCTORS FOR PROFILE PAGE 
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router,
@@ -33,7 +34,7 @@ export class ProfileComponent implements OnInit {
 
     this.initForm();
   }
-
+//CONSTRUCTORS FOR FORM
   initForm() {
     this.updateForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -43,7 +44,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.updateForm);
     this.loading = false;
   }
-
+//UPDATE VALUES UPON CHANGING USER INFORMATION
   public updateUser(): void {
     this.loading = true;
     this.user.name = this.updateForm.value.name;
@@ -54,7 +55,7 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/' + this.user.sub, 'reports']).then(() => {
         window.location.reload();
       });
-
+//ALERTS FOR UPDATING USER DATA
       window.alert("User information updated!");
     }).catch(() => {
       this.loading = false;
