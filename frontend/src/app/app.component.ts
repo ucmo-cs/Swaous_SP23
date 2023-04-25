@@ -8,6 +8,8 @@ import { MatMenuTrigger } from '@angular/material/menu';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+
+//PROPERTIES FOR APP COMPONENT
 export class AppComponent implements OnInit {
   user: IUser;
   isAuthenticated: boolean;
@@ -19,6 +21,7 @@ export class AppComponent implements OnInit {
     this.isAdmin = false;
   }
 
+  //MENU TRIGGER AS WELL AS USER AUTH ENVOKER
   ngOnInit() {
     this.authService.isAuthenticated().then(() => {
       this.isAuthenticated = true;
@@ -35,6 +38,7 @@ export class AppComponent implements OnInit {
     this.trigger.openMenu();
   }
 
+  //CHECKS IF ADMIN IF NOT CLEARS SIGNIN 
   public signOut(): void {
     this.authService.signOut().then(() => {
       this.isAuthenticated = false;

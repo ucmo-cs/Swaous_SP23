@@ -13,15 +13,19 @@ export class SignupComponent {
   signupForm: any;
   codeForm: any;
   loading: boolean;
+  hide: boolean;
+  hideCon: boolean;
   confirmed: boolean;
   user: IUser;
-
+//SIGNUP CONSTRUCTORS
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router, 
     private authService: AuthService,
     private titleService: Title) {
       this.loading = false;
+      this.hide = true;
+      this.hideCon = true;
       this.confirmed = false;
       this.user = {} as IUser;
       this.titleService.setTitle("Sign Up | ROC Swaous");
@@ -30,7 +34,7 @@ export class SignupComponent {
   ngOnInit() {
     this.initForm();
   }
-
+//SETS NEEDED INFORMATION TO REQUIRED
   initForm() {
     this.signupForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -43,34 +47,11 @@ export class SignupComponent {
       code: ['', [Validators.required]]
     })
 
-    console.log(this.signupForm);
+    console.log(this.signupForm, this.codeForm);
     this.loading = false;
   }
-
-  showPassword() {
-    const toggle = document.getElementById('togglePassword');
-    var pswd = document.getElementById("pswd");
-    var type = pswd.getAttribute('type') === 'password' ? 'text' : 'password';
-    
-    pswd.setAttribute('type', type);
-
-    var eye = toggle.getAttribute('class') === 'far fa-eye' ? 'far fa-eye-slash' : 'far fa-eye';
-
-    toggle.setAttribute('class', eye);
-  }
-
-  showConfirmedPassword() {
-    const toggleConfirm = document.getElementById('toggleConfirmPassword');
-    var confirmPswd = document.getElementById("confirmPswd");
-    var type = confirmPswd.getAttribute('type') === 'password' ? 'text' : 'password';
-
-    confirmPswd.setAttribute('type', type);
-
-    var eye = toggleConfirm.getAttribute('class') === 'far fa-eye' ? 'far fa-eye-slash' : 'far fa-eye';
-
-    toggleConfirm.setAttribute('class', eye);
-  }
-
+//VALIDATION FOR PASSWORD IT READS AS THE PASSWORD AREA IS BEING CREATED AND MUST MEET THE REQUIREMENTS STATED IN SIGNUP.HTML
+//ONCE ALL ARE SET TO VALID IT ALLOWS CREATION OF THE PASSWORD FOR THE USER ACCOUNT.
   pswdCred() {
     //Declare variables connecting password characters to page
     var password = this.signupForm.value.pswd;
@@ -131,7 +112,7 @@ export class SignupComponent {
       this.loading = false;
     });
   }
-
+//METHOD FOR 2FA VALIDATION AND CATCHES AN ERROR IF THE 2FA CODE IS NO LONGER VALID OR WRONG
   public confirmUser(): void {
     this.loading = true;
     this.user.code = this.codeForm.value.code;

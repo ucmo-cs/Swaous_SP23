@@ -62,6 +62,26 @@
   }
 }
 
+.filledEnd {
+  width: 2px !important;
+  height: 10px !important;
+  padding: 8px;
+  font-size: 10px;
+  border: none;
+  border-radius: 20px !important;
+  background-color: green !important;
+  color: white !important;
+  cursor: pointer;
+
+  &:hover {
+    background: #0080009f !important;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
 //Subtext for sign in and sign up
 .subtext {
   font-size: 10px;

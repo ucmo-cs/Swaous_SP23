@@ -10,7 +10,7 @@
     <mat-card-header>
       <h1>{{user.name}}'s Status Updates</h1>
     </mat-card-header>
-
+<!--MAT CARD TABLE FOR EMPLOYEE HOME THAT CONSISTS  OF A DATE, PROJECTS, AND THE STATUS OF REPORTS AND WHETHER THEY ARE SUBMITTED OR MISSING-->
     <mat-card-content id="reportsPDF" #reportsPDF *ngIf="reports.length > 0 && loading">
       <table mat-table [dataSource]="dataSource" matSort>
 
@@ -30,7 +30,7 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
+<!--SETS A ROW IF NO DATA HAS BEEN INSERTED FOR ANY REPORTS OR NO REPORTS-->
         <div *matNoDataRow>
             <td style=" font-size: 25px; text-align: center;"><b>No data with filter "{{input.value}}"</b></td>
             <td><img width="350" height="250" alt="EMPTY" src="../../../assets/RisenOneCat.gif" style="text-align: center;" /></td>
@@ -38,7 +38,7 @@
       </table>
 
       
-
+<!--BUTTONS FOR THE TABLE-->
       <div class="tableButtons">
         <mat-form-field style="padding-right: 2%;">
           <mat-label><i class="fa fa-filter"></i> Filter</mat-label>
@@ -48,10 +48,10 @@
         <div class="divider"></div>
         <button mat-raised-button class="unfilled" (click)="export()">Export Table</button>
 
-        <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10,15,20,50,100]" style="display: inline-block; padding-left: 28%;"></mat-paginator>
+        <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10]" style="display: inline-block; padding-left: 28%;"></mat-paginator>
       </div>
     </mat-card-content>
-    
+    <!--PROMPTS USER TO MAKE A REPORT AND ALLOWS THEM TO DO SO-->
     <mat-card-content *ngIf="reports.length == 0 && loading">
       <img style="display: block; margin: auto;" width="350" height="250" alt="EMPTY" src="../../../assets/RisenOneCat.gif" />
       <h3 style="text-align: center;">Your reports will be displayed here! Go ahead and submit your first one by pressing the button below!</h3>

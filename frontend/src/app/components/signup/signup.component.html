@@ -1,6 +1,8 @@
+<!--SIGN UP FORM-->
 <div class="container">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <mat-card *ngIf="!confirmed" class="card" style="width: 500px;">
+      <!--INFORMATION TO FILL OUT AS WELL AS THE ABILITY TO HIDE AND SHOW PASSWORD-->
       <h1>Create New Account</h1>
       <form [formGroup]="signupForm">
         <mat-label><i class="fa fa-user"></i> Full Name</mat-label>
@@ -13,10 +15,12 @@
         </mat-form-field>
         <mat-label><i class="fa fa-key"></i> Password</mat-label>
         <mat-form-field>
-          <i class="far fa-eye-slash" id="togglePassword" (click)="showPassword()" style="float: right; cursor: pointer"></i>
-          <input type="password" id="pswd" name="pswd" (keyup)="pswdCred()" matInput formControlName="pswd" />
+          <input [type]="hide ? 'password' : 'text'" id="pswd" name="pswd" (keyup)="pswdCred()" matInput formControlName="pswd" />
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
-
+<!--LISTS REQUIREMENTS FOR THE PASSWORD-->
         <h3>Password must:</h3>
         <div class="pswdCred">
             <p id="lower" class="invalid">Have at least <b>one (1) lowercase</b> letter</p>
@@ -25,21 +29,23 @@
             <p id="special" class="invalid">Have at least <b>one (1) special character</b> (  !"#$%&'()*+,-./:;<=>?@[\]^_`/|~)</p>
             <p id="length" class="invalid">Be minimum <b>eight (8) characters</b> long</p>
         </div>
-
+<!--REPEAT PASSWORD FOR CONFIRMATION-->
         <mat-label><i class="fa fa-key"></i>  Confirm Password</mat-label>
         <mat-form-field>
-          <i class="far fa-eye-slash" id="toggleConfirmPassword" (click)="showConfirmedPassword()" style="float: right; cursor: pointer"></i>
-          <input type="password" id="confirmPswd" name="confirmPswd" matInput formControlName="confirmPswd" />
+          <input [type]="hideCon ? 'password' : 'text'" id="confirmPswd" name="confirmPswd" matInput formControlName="confirmPswd" />
+          <button mat-icon-button matSuffix (click)="hideCon = !hideCon" [attr.aria-pressed]="hideCon">
+            <mat-icon>{{hideCon ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
 
-        <div *ngIf="signupForm.value.pswd != signupForm.value.confirmPswd" style="color: red">Passwords do not match!</div>
+        <div *ngIf="signupForm.value.pswd != signupForm.value.confirmPswd" style="color: red"><b>Passwords do not match!</b></div>
         <button mat-raised-button class="filled" [disabled]="(signupForm.value.pswd !== signupForm.value.confirmPswd) || signupForm.invalid" (click)="signUp()" style="align-self: center; width: 350px;">Create Account!</button>
         <a class="subtext" routerLink="/signin">Already have an account? Sign in here!</a>
       </form>
 
-    <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="loading" style="align-self: center; padding-top: 10px;"></div>
+      <div class="fa fa-spinner fa-pulse fa-fw" *ngIf="loading" style="align-self: center; padding-top: 10px;"></div>
     </mat-card>
-
+<!--INFORMS USER ABOUT 2FA AND TO CHECK THEIR EMAIL WITH THEIR ACCOUNT WITH A VERIFICATION EMAIL-->
     <mat-card *ngIf="confirmed" class="card" style="width: 500px;">
       <h1>Confirm Account</h1>
       <form [formGroup]="codeForm">
